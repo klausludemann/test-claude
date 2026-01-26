@@ -7,11 +7,8 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.python311
-    # pkgs.go
-    # pkgs.python311
-    # pkgs.python311Packages.pip
-    # pkgs.nodejs_20
-    # pkgs.nodePackages.nodemon
+    pkgs.nodejs_20
+    pkgs.nodePackages.nodemon
   ];
 
   # Sets environment variables in the workspace
@@ -27,7 +24,7 @@
       enable = true;
       previews = {
         web = {
-          command = ["python3", "-m", "http.server", "$PORT"];
+          command = ["nodemon", "--watch", "index.html", "--exec", "python3 -m http.server $PORT"];
           manager = "web";
         };
       };
